@@ -396,8 +396,8 @@ body {
     }
 }
 
-/* Contenedor para la pirámide */
-.pyramid-container {
+/* Contenedor para el cubo */
+.cube-container {
     width: 200px;
     height: 200px;
     margin: 0 auto;
@@ -407,60 +407,60 @@ body {
     align-items: center;
 }
 
-/* Pirámide 3D */
-.pyramid {
+/* Cubo 3D */
+.cube {
     position: relative;
     width: 100px;
     height: 100px;
     transform-style: preserve-3d;
-    animation: rotatePyramid 8s linear infinite;
+    animation: rotateCube 8s linear infinite;
     transition-property: transform;
     transition-duration: 0.3s;
 }
 
-/* Caras de la pirámide */
-.pyramid-face {
+/* Caras del cubo */
+.cube-face {
     position: absolute;
-    width: 0;
-    height: 0;
-    border-left: 50px solid transparent;
-    border-right: 50px solid transparent;
-    border-bottom: 86.6px solid var(--primary-color);
-    animation: changeColor 8s linear infinite;
-    transition-property: border-bottom-color;
+    width: 100px;
+    height: 100px;
+    background: var(--primary-color);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    animation: changeCubeColor 8s linear infinite;
+    transition-property: background-color;
     transition-duration: 0.3s;
 }
 
 /* Posicionamiento de las caras */
-.pyramid-face:nth-child(1) { transform: rotateY(0deg) translateZ(0); }
-.pyramid-face:nth-child(2) { transform: rotateY(90deg) translateZ(50px); }
-.pyramid-face:nth-child(3) { transform: rotateY(180deg) translateZ(0); }
-.pyramid-face:nth-child(4) { transform: rotateY(270deg) translateZ(50px); }
-.pyramid-face:nth-child(5) { transform: rotateX(30deg) translateZ(0); }
+.cube-face.front  { transform: translateZ(50px); }
+.cube-face.back   { transform: translateZ(-50px) rotateY(180deg); }
+.cube-face.right  { transform: translateX(50px) rotateY(90deg); }
+.cube-face.left   { transform: translateX(-50px) rotateY(-90deg); }
+.cube-face.top    { transform: translateY(-50px) rotateX(90deg); }
+.cube-face.bottom { transform: translateY(50px) rotateX(-90deg); }
 
-/* Animación de rotación */
-@keyframes rotatePyramid {
-    from {
-        transform: rotateY(0deg);
+/* Animación de rotación del cubo */
+@keyframes rotateCube {
+    0% {
+        transform: rotateX(0deg) rotateY(0deg);
     }
-    to {
-        transform: rotateY(360deg);
+    100% {
+        transform: rotateX(360deg) rotateY(360deg);
     }
 }
 
 /* Animación de cambio de color */
-@keyframes changeColor {
+@keyframes changeCubeColor {
     0% {
-        border-bottom-color: var(--primary-color);
+        background-color: var(--primary-color);
     }
     33% {
-        border-bottom-color: var(--secondary-color);
+        background-color: var(--secondary-color);
     }
     66% {
-        border-bottom-color: #e74c3c;
+        background-color: #e74c3c;
     }
     100% {
-        border-bottom-color: var(--primary-color);
+        background-color: var(--primary-color);
     }
 }
 
