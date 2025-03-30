@@ -1,0 +1,545 @@
+/* Variables globales */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --text-color: #333;
+    --background-color: #f5f6fa;
+    --card-background: #faf6f0;
+    --transition-speed: 0.3s;
+}
+
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+html {
+    scroll-padding-top: 60px; /* Altura del header */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+/* Layout principal usando CSS Grid */
+body {
+    display: grid;
+    grid-template-areas:
+        "header"
+        "nav"
+        "main"
+        "footer";
+    min-height: 100vh;
+}
+
+/* Header */
+.header {
+    grid-area: header;
+    background-color: var(--primary-color);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.main-title {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+    text-align: center;
+    flex-grow: 1;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Navegación */
+.sidebar-nav {
+    grid-area: nav;
+    background-color: var(--primary-color);
+    padding: 1rem;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem;
+    display: block;
+    transition-property: background-color;
+    transition-duration: var(--transition-speed);
+    border-radius: 4px;
+}
+
+.nav-link:hover {
+    background-color: var(--secondary-color);
+}
+
+.nav-link.active {
+    background-color: var(--secondary-color);
+}
+
+/* Contenido principal */
+.main-content {
+    grid-area: main;
+    padding: 2rem;
+    margin-top: 60px;
+}
+
+.section-title {
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+/* Galería */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+.gallery-card {
+    background-color: var(--card-background);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition-property: transform, border-color, background-color, box-shadow;
+    transition-duration: var(--transition-speed);
+    padding: 1rem;
+    border: 2px solid transparent;
+}
+
+.gallery-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--secondary-color);
+}
+
+.gallery-card:active {
+    background-color: #f0e6d9;
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.gallery-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition-property: filter;
+    transition-duration: var(--transition-speed);
+}
+
+.gallery-card:hover .gallery-image {
+    filter: grayscale(0%);
+}
+
+.card-title {
+    padding: 1rem;
+    text-align: center;
+}
+
+/* Footer */
+.footer {
+    grid-area: footer;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.footer-title {
+    margin-bottom: 1rem;
+}
+
+.social-list {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.social-link {
+    color: white;
+    font-size: 1.5rem;
+    transition-property: color;
+    transition-duration: var(--transition-speed);
+}
+
+.social-link:hover {
+    color: var(--secondary-color);
+}
+
+/* Media Queries */
+@media (min-width: 576px) {
+    body {
+        grid-template-areas:
+            "header header"
+            "nav main"
+            "footer footer";
+    }
+
+    .sidebar-nav {
+        width: 250px;
+        height: calc(100vh - 60px);
+        position: fixed;
+        left: 0;
+        top: 60px;
+    }
+
+    .main-content {
+        margin-left: 250px;
+    }
+
+    .menu-toggle {
+        display: none;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+@media (min-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.gallery-card {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+/* Animaciones de las 4 tarjetas */
+/* Contenedor de la esfera */
+.sphere-container {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--card-background);
+    border-radius: 8px;
+}
+
+/* Esfera animada */
+.animated-sphere {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: linear-gradient(45deg, #3498db, #2ecc71);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    animation: moveSphere 4s infinite ease-in-out;
+    transition-property: transform, background, box-shadow;
+    transition-duration: 0.3s;
+}
+
+/* Animación de movimiento y cambio de color */
+@keyframes moveSphere {
+    0% {
+        bottom: 0;
+        transform: translateX(-50%) scale(1);
+        background: linear-gradient(45deg, #3498db, #2ecc71);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+    50% {
+        bottom: calc(100% - 60px);
+        transform: translateX(-50%) scale(1.1);
+        background: linear-gradient(45deg, #e74c3c, #f1c40f);
+        box-shadow: 0 0 30px rgba(231, 76, 60, 0.5);
+    }
+    100% {
+        bottom: 0;
+        transform: translateX(-50%) scale(1);
+        background: linear-gradient(45deg, #9b59b6, #1abc9c);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+}
+
+
+/* Contenedor para la animación */
+.rectangle-track-container {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    background-color: var(--card-background);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Rectángulo animado */
+.moving-rectangle {
+    width: 40px;
+    height: 20px;
+    position: absolute;
+    background-color: #3498db;
+    animation: moveAround 8s infinite linear;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    transition-property: transform, background-color, box-shadow;
+    transition-duration: 0.3s;
+}
+
+/* Animación de movimiento y cambio de color */
+@keyframes moveAround {
+    /* Derecha (de izquierda a derecha) */
+    0% {
+        top: 0;
+        left: 0;
+        background-color: #3498db; /* Azul */
+        transform: translateX(0);
+    }
+    25% {
+        top: 0;
+        left: 100%;
+        background-color: #3498db;
+        transform: translateX(-100%);
+    }
+    
+    /* Abajo (de arriba a abajo) */
+    26% {
+        top: 0;
+        left: 100%;
+        background-color: #2ecc71; /* Verde */
+        transform: translateX(-100%) translateY(0);
+    }
+    50% {
+        top: 100%;
+        left: 100%;
+        background-color: #2ecc71;
+        transform: translateX(-100%) translateY(-100%);
+    }
+    
+    /* Izquierda (de derecha a izquierda) */
+    51% {
+        top: 100%;
+        left: 0;
+        background-color: #e74c3c; /* Rojo */
+        transform: translateY(-100%) translateX(0);
+    }
+    75% {
+        top: 100%;
+        left: 0;
+        background-color: #e74c3c;
+        transform: translateY(-100%) translateX(100%);
+    }
+    
+    /* Arriba (de abajo a arriba) */
+    76% {
+        top: 0;
+        left: 0;
+        background-color: #f1c40f; /* Amarillo */
+        transform: translateX(100%) translateY(0);
+    }
+    100% {
+        top: 0;
+        left: 0;
+        background-color: #f1c40f;
+        transform: translateX(0) translateY(100%);
+    }
+}
+
+/* Contenedor para la pirámide */
+.pyramid-container {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Pirámide 3D */
+.pyramid {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    transform-style: preserve-3d;
+    animation: rotatePyramid 8s linear infinite;
+    transition-property: transform;
+    transition-duration: 0.3s;
+}
+
+/* Caras de la pirámide */
+.pyramid-face {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 86.6px solid var(--primary-color);
+    animation: changeColor 8s linear infinite;
+    transition-property: border-bottom-color;
+    transition-duration: 0.3s;
+}
+
+/* Posicionamiento de las caras */
+.pyramid-face:nth-child(1) { transform: rotateY(0deg) translateZ(0); }
+.pyramid-face:nth-child(2) { transform: rotateY(90deg) translateZ(50px); }
+.pyramid-face:nth-child(3) { transform: rotateY(180deg) translateZ(0); }
+.pyramid-face:nth-child(4) { transform: rotateY(270deg) translateZ(50px); }
+.pyramid-face:nth-child(5) { transform: rotateX(30deg) translateZ(0); }
+
+/* Animación de rotación */
+@keyframes rotatePyramid {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+/* Animación de cambio de color */
+@keyframes changeColor {
+    0% {
+        border-bottom-color: var(--primary-color);
+    }
+    33% {
+        border-bottom-color: var(--secondary-color);
+    }
+    66% {
+        border-bottom-color: #e74c3c;
+    }
+    100% {
+        border-bottom-color: var(--primary-color);
+    }
+}
+
+/* Contenedor para el avión */
+.airplane-container {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    background-color: var(--card-background);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Avión */
+.airplane {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 0;
+    bottom: 20%;
+    transform: rotate(0deg);
+    animation: flyAirplane 12s infinite ease-in-out;
+    transition-property: transform, left;
+    transition-duration: 0.3s;
+}
+
+/* Cuerpo del avión */
+.airplane::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #e74c3c, #c0392b);
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition-property: background, box-shadow;
+    transition-duration: 0.3s;
+}
+
+/* Alas del avión */
+.airplane::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 10px;
+    background: #e74c3c;
+    top: 50%;
+    left: -10px;
+    transform: translateY(-50%);
+    border-radius: 5px;
+    transition-property: background-color;
+    transition-duration: 0.3s;
+}
+
+/* Animación del avión */
+@keyframes flyAirplane {
+    0% {
+        left: -40px;
+        bottom: 20%;
+        transform: rotate(0deg);
+    }
+    48% {
+        left: 100%;
+        bottom: 20%;
+        transform: rotate(0deg);
+    }
+    50% {
+        left: 100%;
+        bottom: 20%;
+        transform: rotate(180deg);
+    }
+    98% {
+        left: -40px;
+        bottom: 20%;
+        transform: rotate(180deg);
+    }
+    100% {
+        left: -40px;
+        bottom: 20%;
+        transform: rotate(0deg);
+    }
+}

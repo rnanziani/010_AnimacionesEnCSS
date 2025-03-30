@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Galería de imágenes con efectos visuales y diseño responsivo">
+    <title>Galería de Imágenes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo" aria-label="Inicio">
+            <img src="./assets/img/logo-310x310.png" alt="Logo de la página" width="60" height="60">
+        </a>
+        <h1 class="main-title">Galería de Animaciones CSS</h1>
+        <button class="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
+            <i class="fas fa-bars" aria-hidden="true"></i>
+        </button>
+    </header>
+
+    <nav class="sidebar-nav" aria-label="Navegación principal">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="#inicio" class="nav-link">Inicio</a></li>
+            <li class="nav-item"><a href="#esfera" class="nav-link">Esfera Animada</a></li>
+            <li class="nav-item"><a href="#rectangulo" class="nav-link">Rectángulo Viajero</a></li>
+            <li class="nav-item"><a href="#piramide" class="nav-link">Pirámide 3D</a></li>
+            <li class="nav-item"><a href="#avion" class="nav-link">Avión Volador</a></li>
+            <li class="nav-item"><a href="#contacto" class="nav-link">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <section class="gallery-section" id="inicio">
+            <h1 class="section-title">Galería de Imágenes</h1>
+            <div class="gallery-grid">
+                <article class="gallery-card" id="esfera">
+                    <div class="sphere-container">
+                        <div class="animated-sphere"></div>
+                    </div>
+                    <h3 class="card-title">Esfera Animada</h3>
+                </article>
+                <article class="gallery-card" id="rectangulo">
+                    <div class="rectangle-track-container">
+                        <div class="moving-rectangle"></div>
+                    </div>
+                    <h3 class="card-title">Rectángulo Viajero</h3>
+                </article>
+                <article class="gallery-card" id="piramide">
+                    <div class="pyramid-container">
+                        <div class="pyramid">
+                            <div class="pyramid-face"></div>
+                            <div class="pyramid-face"></div>
+                            <div class="pyramid-face"></div>
+                            <div class="pyramid-face"></div>
+                            <div class="pyramid-face"></div>
+                        </div>
+                    </div>
+                    <h3 class="card-title">Pirámide 3D</h3>
+                </article>
+                <article class="gallery-card" id="avion">
+                    <div class="airplane-container">
+                        <div class="airplane"></div>
+                    </div>
+                    <h3 class="card-title">Avión Volador</h3>
+                </article>
+            </div>
+        </section>
+
+        <section class="info-section">
+            <h2 class="section-title">Información Adicional</h2>
+            <p>Esta es una galeria de animaciones CSS, realizadas con el fin de practicar y aprender.</p>
+        </section>
+    </main>
+
+    <footer class="footer" id="contacto">
+        <div class="footer-contact">
+            <h3 class="footer-title">Contacto</h3>
+            <address>
+                <p>Email: <a href="mailto:contacto@ejemplo.com">rnanziani@gmail.com</a></p>
+                <p>Teléfono: <a href="tel:+1234567890">+54 9 xxxx-xxxx</a></p>
+            </address>
+        </div>
+        <div class="footer-social">
+            <h3 class="footer-title">Redes Sociales</h3>
+            <ul class="social-list">
+                <li class="social-item">
+                    <a href="#" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li class="social-item">
+                    <a href="#" class="social-link" aria-label="Twitter">
+                        <i class="fab fa-twitter" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li class="social-item">
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li class="social-item">
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin" aria-hidden="true"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+</body>
+</html>
